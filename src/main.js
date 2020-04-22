@@ -1,8 +1,10 @@
 import Vue from 'vue'
+import Vuex from 'vuex'
 import App from './App.vue'
 import VueExpandableImage from 'vue-expandable-image'
 
 Vue.use(VueExpandableImage)
+Vue.use(Vuex)
 
 Vue.config.productionTip = false
 

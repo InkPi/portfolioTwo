@@ -21,7 +21,7 @@
 import HeaderTop from './components/HeaderTop.vue';
 import FooterBottom from './components/Footer.vue';
 //import Home from './components/HomePage.vue';
-import Portfolio from './components/PortfolioBody.vue';
+import Portfolio from './views/PortfolioBody.vue';
 import ExpandableImage from '../ExpandableImage'
 
 export default {
