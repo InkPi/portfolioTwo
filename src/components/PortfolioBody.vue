@@ -4,14 +4,23 @@
          <img src="../assets/portribbon.png">
     <br>
     <br>
-    <h1>Can this work?</h1>
       <div class="image-popup-no-margins">
         <!-- <a :href="link"><div class="port1"></div></a> -->
+
+          <!-- <div v-for="link in links" :key="link.linkId" :style="link.styleCss" :class="'port' + link.linkId">
+            <expandable-image
+              class="image"
+              :href="link.linkHref"
+            />
+          </div> -->
         
         <a v-for="link in links" :key="link.linkId" :href="link.linkHref">
             <!-- <div :style="link.styleCss"></div> -->
-          <div :style="link.styleCss" :class="'port' + link.linkId"></div>
+          <div :style="link.styleCss" :class="'port' + link.linkId">
+          </div>
         </a>
+
+        <img v-bind:src="linko"/>
 
       </div>
       
@@ -19,11 +28,16 @@
 </template>
 
 <script>
+//import ExpandableImage from '../../ExpandableImage'
+
 export default {
     name: "portfolioBody",
+    components: {
+      //ExpandableImage
+    },
     data() {
       return {
-        // link: "../assets/WebsitePortprescopy.pdf",
+        linko: "../assets/portribbon.png",
         links: [
           {
             linkId: 1,
@@ -49,7 +63,7 @@ export default {
             styleCss: {
               width: '320px', 
               height: '600px', 
-              float: 'left'
+              float: 'right'
             }
           },
           {
