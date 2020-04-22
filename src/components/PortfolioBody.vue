@@ -4,12 +4,13 @@
          <img src="../assets/portribbon.png">
     <br>
     <br>
+    <h1>Can this work?</h1>
       <div class="image-popup-no-margins">
         <!-- <a :href="link"><div class="port1"></div></a> -->
         
         <a v-for="link in links" :key="link.linkId" :href="link.linkHref">
             <!-- <div :style="link.styleCss"></div> -->
-          <div :class="'port' + link.linkId"></div>
+          <div :style="link.styleCss" :class="'port' + link.linkId"></div>
         </a>
 
       </div>
@@ -22,26 +23,24 @@ export default {
     name: "portfolioBody",
     data() {
       return {
-        link: "../assets/WebsitePortprescopy.pdf",
+        // link: "../assets/WebsitePortprescopy.pdf",
         links: [
           {
             linkId: 1,
-            linkHref: "../assets/WebsitePortprescopy.pdf",
+            linkHref: "../assets/960_grid_16_col3d.jpg",
             styleCss: {
               width: '320px',
               height: '300px', 
-              float: 'left', 
-              background: "url('~@/../assets/960_grid_16_col3d.jpg)"
+              float: 'left'
             }
           },
           {
             linkId: 2,
-            linkHref: "../assets/increasedtemp.jpg",
+            linkHref: "../assets/seniorinformationc_icon.jpg",
             styleCss: {
               width: '320px', 
               height: '300px', 
-              float: 'left', 
-              background: "url('../assets/seniorinformationc_icon.jpg')"
+              float: 'left'
             }
           },
           {
@@ -50,8 +49,7 @@ export default {
             styleCss: {
               width: '320px', 
               height: '600px', 
-              float: 'left', 
-              background: "url('../assets/wowhuhsite.jpg')"
+              float: 'left'
             }
           },
           {
@@ -60,8 +58,7 @@ export default {
             styleCss: {
               width: '320px',
               height: '300px',
-              float: 'left',
-              background: "url('../assets/SeniorPort1_icon.jpg')"
+              float: 'left'
             }
           },
           {
@@ -70,8 +67,7 @@ export default {
             styleCss: {
               width: '320px', 
               height: '300px', 
-              float: 'left', 
-              backgroundImage: "url('../assets/typo9_icon.jpg')"
+              float: 'left'
             } 
           },
           {
@@ -80,8 +76,7 @@ export default {
             styleCss: {
               width: '640px', 
               height: '300px', 
-              float: 'left', 
-              background: "url('../assets/CBI_justpic.jpg')"
+              float: 'left'
             }  
           },
           {
@@ -90,8 +85,7 @@ export default {
             styleCss: {
               width: '320px', 
               height: '300px', 
-              float: 'left', 
-              background: "url('../assets/SeniorPortDragon_icon.jpg')"
+              float: 'left'
             } 
           },
           {
@@ -100,8 +94,7 @@ export default {
             styleCss: {
               width: '320px',
               height: '300px',
-              float: 'left',
-              background: "url('../assets/SeniorPortsakura_icon.jpg')"
+              float: 'left'
             } 
           },
           {
@@ -110,8 +103,7 @@ export default {
             styleCss: {
               width: '640px', 
               height: '300px', 
-              float: 'left',
-              background: "url('../assets/27.jpg')"
+              float: 'left'
             } 
           },
           {
@@ -120,8 +112,7 @@ export default {
             styleCss: {
               width: '640px', 
               height: '300px', 
-              float: 'left',
-              background: "url('../assets/typo2maggrids_icon.jpg')"
+              float: 'left'
             } 
           },
           {
@@ -130,8 +121,7 @@ export default {
             styleCss: {
               width: '320px', 
               height: '300px', 
-              float: 'left', 
-              background: "url('../assets/acspreporiginal2icon.jpg')"
+              float: 'left'
             } 
           }
         ]
@@ -146,16 +136,16 @@ export default {
     margin: 0px auto;
   }
 
-  .port1 {width: 320px; height: 300px; float:left; background: url('../assets/960_grid_16_col3d.jpg');}
-  .port2 {width: 320px; height: 300px; float:left; background: url('../assets/seniorinformationc_icon.jpg');}
-  .port3 {width: 320px; height: 600px; float:right; background: url('../assets/wowhuhsite.jpg');}
-  .port4 {width: 320px; height: 300px; float:left; background: url('../assets/SeniorPort1_icon.jpg');}
-  .port5 {width: 320px; height: 300px; float:left; background: url('../assets/typo9_icon.jpg');}
-  .port6 {width: 640px; height: 300px; float:left; background: url('../assets/CBI_justpic.jpg');}
-  .port7 {width: 320px; height: 300px; float:left; background: url('../assets/SeniorPortDragon_icon.jpg');}
-  .port8 {width: 320px; height: 300px; float:left; background: url('../assets/SeniorPortsakura_icon.jpg');}
-  .port9 {width: 640px; height: 300px; float:left; background: url('../assets/27.jpg');}
-  .port10 {width: 640px; height: 300px; float:left; background: url('../assets/typo2maggrids_icon.jpg');}
-  .port11 {width: 320px; height: 300px; float:left; background: url('../assets/acspreporiginal2icon.jpg');}
+  .port1 {background: url('../assets/960_grid_16_col3d.jpg');}
+  .port2 {background: url('../assets/seniorinformationc_icon.jpg');}
+  .port3 {background: url('../assets/wowhuhsite.jpg');}
+  .port4 {background: url('../assets/SeniorPort1_icon.jpg');}
+  .port5 {background: url('../assets/typo9_icon.jpg');}
+  .port6 {background: url('../assets/CBI_justpic.jpg');}
+  .port7 {background: url('../assets/SeniorPortDragon_icon.jpg');}
+  .port8 {background: url('../assets/SeniorPortsakura_icon.jpg');}
+  .port9 {background: url('../assets/27.jpg');}
+  .port10 {background: url('../assets/typo2maggrids_icon.jpg');}
+  .port11 {background: url('../assets/acspreporiginal2icon.jpg');}
 
 </style>
