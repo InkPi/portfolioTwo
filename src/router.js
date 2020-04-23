@@ -17,5 +17,6 @@ export default new Router({
       name: "portfolio",
       component: Portfolio
     }
+    /* redirect router when change path after production */
   ]
 });

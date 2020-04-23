@@ -1,11 +1,10 @@
 <template>
   <div id="headerTop">
-    <ul>
-      <li>About</li>
-      <li>Portfolio</li>
-      <li>Resume</li>
-      <li>Contact</li>
-    </ul>
+    <div id="nav">
+      <router-link :to="{ name: 'home' }">Home</router-link>
+      <router-link :to="{ name: 'portfolio'}">Portfolio</router-link>
+    </div>
+    <router-view></router-view>
   </div>
 </template>
 

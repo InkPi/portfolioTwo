@@ -2,8 +2,16 @@
   <div id="app">
     <!-- <img alt="Vue logo" src="./assets/logo.png"> -->
     <!-- <HelloWorld msg="Welcome to Your Vue.js App"/> -->
+    
     <HeaderTop></HeaderTop>
-    <portfolio-body></portfolio-body>
+    <!-- 
+    <portfolio-body></portfolio-body> -->
+
+    <!-- <div id="nav">
+      <router-link to="/">Home</router-link>
+      <router-link to="/portfolio">Portfolio</router-link>
+    </div>
+    <router-view></router-view> -->
 
     <expandable-image
       class="image"
@@ -17,11 +25,9 @@
 </template>
 
 <script>
-//import HelloWorld from './components/HelloWorld.vue';
 import HeaderTop from "./components/HeaderTop.vue";
 import FooterBottom from "./components/Footer.vue";
-//import Home from './components/HomePage.vue';
-import Portfolio from "./views/PortfolioBody.vue";
+//import Portfolio from "./views/PortfolioBody.vue";
 import ExpandableImage from "../ExpandableImage";
 
 export default {
@@ -30,7 +36,7 @@ export default {
     //HelloWorld,
     HeaderTop,
     ExpandableImage,
-    "portfolio-body": Portfolio,
+    //"portfolio-body": Portfolio,
     "footer-bottom": FooterBottom
   }
 };
