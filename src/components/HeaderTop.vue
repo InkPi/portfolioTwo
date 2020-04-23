@@ -1,10 +1,13 @@
 <template>
   <div id="headerTop">
     <div id="nav">
-      <router-link :to="{ name: 'home' }">Home</router-link>
-      <router-link :to="{ name: 'portfolio'}">Portfolio</router-link>
+      <router-link :to="{ name: 'home' }">Home </router-link> 
+      <router-link :to="{ name: 'portfolio' }"> Portfolio</router-link>
+      <router-link :to="{ name: 'aboutme' }"> About Me </router-link>
+      <router-link :to="{ name: 'contact' }">Contact</router-link>
     </div>
-    <router-view></router-view>
+    <!-- Below will repeat if used somewhere else (imported) -->
+    <!-- <router-view></router-view> -->
   </div>
 </template>
 
@@ -14,4 +17,6 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+#nav > a {color:white}
+</style>

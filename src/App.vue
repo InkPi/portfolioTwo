@@ -3,7 +3,8 @@
     <!-- <img alt="Vue logo" src="./assets/logo.png"> -->
     <!-- <HelloWorld msg="Welcome to Your Vue.js App"/> -->
     
-    <HeaderTop></HeaderTop>
+    <Homepage></Homepage>
+    
     <!-- 
     <portfolio-body></portfolio-body> -->
 
@@ -13,43 +14,42 @@
     </div>
     <router-view></router-view> -->
 
-    <expandable-image
+    <!-- <expandable-image
       class="image"
       src="https://images.unsplash.com/photo-1550948537-130a1ce83314?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2552&q=80"
       alt="dog"
       title="dog"
-    />
-
-    <footer-bottom></footer-bottom>
+    /> -->
   </div>
 </template>
 
 <script>
-import HeaderTop from "./components/HeaderTop.vue";
-import FooterBottom from "./components/Footer.vue";
 //import Portfolio from "./views/PortfolioBody.vue";
-import ExpandableImage from "../ExpandableImage";
+import Homepage from "./views/HomePage.vue";
+//import ExpandableImage from "../ExpandableImage";
 
 export default {
   name: "App",
   components: {
     //HelloWorld,
-    HeaderTop,
-    ExpandableImage,
+    Homepage
+    //ExpandableImage,
     //"portfolio-body": Portfolio,
-    "footer-bottom": FooterBottom
   }
 };
 </script>
 
 <style>
+* {
+  margin: 0 auto;
+}
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
 
   /* For Expandable Image */
 
@@ -79,4 +79,5 @@ a:hover {
   width: 400px;
   max-width: 100%;
 }
+
 </style>
