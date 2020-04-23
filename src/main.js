@@ -1,15 +1,13 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
-import App from './App.vue'
-import VueExpandableImage from 'vue-expandable-image'
+import Vue from "vue";
+import Vuex from "vuex";
+import App from "./App.vue";
+import VueExpandableImage from "vue-expandable-image";
 
-Vue.use(VueExpandableImage)
-Vue.use(Vuex)
+Vue.use(VueExpandableImage);
+Vue.use(Vuex);
 
-Vue.config.productionTip = false
+Vue.config.productionTip = false;
 
 new Vue({
-  render: h => h(App),
-}).$mount('#app')
-
-
+  render: h => h(App)
+}).$mount("#app");

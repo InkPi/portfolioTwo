@@ -18,23 +18,22 @@
 
 <script>
 //import HelloWorld from './components/HelloWorld.vue';
-import HeaderTop from './components/HeaderTop.vue';
-import FooterBottom from './components/Footer.vue';
+import HeaderTop from "./components/HeaderTop.vue";
+import FooterBottom from "./components/Footer.vue";
 //import Home from './components/HomePage.vue';
-import Portfolio from './views/PortfolioBody.vue';
-import ExpandableImage from '../ExpandableImage'
+import Portfolio from "./views/PortfolioBody.vue";
+import ExpandableImage from "../ExpandableImage";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
     //HelloWorld,
     HeaderTop,
     ExpandableImage,
     "portfolio-body": Portfolio,
     "footer-bottom": FooterBottom
-  },
-  
-}
+  }
+};
 </script>
 
 <style>
@@ -46,8 +45,8 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
 
-/* For Expandable Image */
-  
+  /* For Expandable Image */
+
   /* display: flex;
   justify-content: center;
   align-items: center;
@@ -58,14 +57,20 @@ export default {
   position: relative; */
 }
 
-a:link {color: black;
-		text-decoration: none;}
-a:visited {color: black;}
-a:hover {color: white;}
+a:link {
+  color: black;
+  text-decoration: none;
+}
+a:visited {
+  color: black;
+}
+a:hover {
+  color: white;
+}
 
 /* For Expandable Image */
-  .image {
-    width: 400px;
-    max-width: 100%;
-  }
+.image {
+  width: 400px;
+  max-width: 100%;
+}
 </style>
