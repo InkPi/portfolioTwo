@@ -2,7 +2,6 @@
   <div id="app">
     <!-- <img alt="Vue logo" src="./assets/logo.png"> -->
     <!-- <HelloWorld msg="Welcome to Your Vue.js App"/> -->
-    
     <Homepage></Homepage>
     
     <!-- 
@@ -64,14 +63,14 @@ export default {
 }
 
 a:link {
-  color: black;
+  color: white;
   text-decoration: none;
 }
 a:visited {
-  color: black;
+  color: white;
 }
 a:hover {
-  color: white;
+  color: #ff0dbf;
 }
 
 /* For Expandable Image */

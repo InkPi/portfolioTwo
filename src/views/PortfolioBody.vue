@@ -1,6 +1,5 @@
 <template>
   <div id="portfolioBody">
-    <p>Portfolio</p>
     <img src="../assets/portribbon.png" />
     <br />
     <br />
