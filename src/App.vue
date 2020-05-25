@@ -2,7 +2,7 @@
   <div id="app">
     <!-- <img alt="Vue logo" src="./assets/logo.png"> -->
     <!-- <HelloWorld msg="Welcome to Your Vue.js App"/> -->
-    <Homepage></Homepage>
+    <router-view></router-view>
     
     <!-- 
     <portfolio-body></portfolio-body> -->
@@ -24,14 +24,12 @@
 
 <script>
 //import Portfolio from "./views/PortfolioBody.vue";
-import Homepage from "./views/HomePage.vue";
 //import ExpandableImage from "../ExpandableImage";
 
 export default {
   name: "App",
   components: {
     //HelloWorld,
-    Homepage
     //ExpandableImage,
     //"portfolio-body": Portfolio,
   }
