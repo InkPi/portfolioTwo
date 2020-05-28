@@ -1,5 +1,6 @@
 <template>
   <div id="portfolioBody">
+    <HeaderTop :style="fontColors" />
     <img src="../assets/portribbon.png" />
     <br />
     <br />
@@ -25,11 +26,12 @@
 
 <script>
 //import ExpandableImage from '../../ExpandableImage'
+import HeaderTop from "../components/HeaderTop";
 
 export default {
   name: "portfolioBody",
   components: {
-    //ExpandableImage
+    HeaderTop
   },
   data() {
     return {
@@ -179,4 +181,5 @@ export default {
 .port11 {
   background: url("../assets/acspreporiginal2icon.jpg");
 }
+
 </style>

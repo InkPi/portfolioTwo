@@ -1,10 +1,8 @@
 <template>
   <div id="app">
-    <!-- <img alt="Vue logo" src="./assets/logo.png"> -->
-    <!-- <HelloWorld msg="Welcome to Your Vue.js App"/> -->
-    <router-view></router-view>
-    
-    <!-- 
+    <router-view class="home"></router-view>
+
+    <!--  :class="linkcolor"
     <portfolio-body></portfolio-body> -->
 
     <!-- <div id="nav">
@@ -32,6 +30,14 @@ export default {
     //HelloWorld,
     //ExpandableImage,
     //"portfolio-body": Portfolio,
+  },
+  data() {
+    return {
+      linkcolor: "white-link"
+    };
+  },
+  beforeCreate: function() {
+    document.body.className = "home";
   }
 };
 </script>
@@ -60,16 +66,16 @@ export default {
   position: relative; */
 }
 
-a:link {
-  color: white;
+.home a {
   text-decoration: none;
 }
-a:visited {
+
+/* a:visited {
   color: white;
-}
-a:hover {
+} */
+/* a:hover {
   color: #ff0dbf;
-}
+} */
 
 /* For Expandable Image */
 .image {
