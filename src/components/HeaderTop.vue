@@ -15,7 +15,6 @@
       >
     </div>
     <!-- Below will repeat if used somewhere else (imported) -->
-    <div v-if="checkHome"><router-view></router-view></div>
   </div>
 </template>
 

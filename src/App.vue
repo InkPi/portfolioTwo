@@ -2,15 +2,6 @@
   <div id="app">
     <router-view class="home"></router-view>
 
-    <!--  :class="linkcolor"
-    <portfolio-body></portfolio-body> -->
-
-    <!-- <div id="nav">
-      <router-link to="/">Home</router-link>
-      <router-link to="/portfolio">Portfolio</router-link>
-    </div>
-    <router-view></router-view> -->
-
     <!-- <expandable-image
       class="image"
       src="https://images.unsplash.com/photo-1550948537-130a1ce83314?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2552&q=80"
@@ -30,11 +21,6 @@ export default {
     //HelloWorld,
     //ExpandableImage,
     //"portfolio-body": Portfolio,
-  },
-  data() {
-    return {
-      linkcolor: "white-link"
-    };
   },
   beforeCreate: function() {
     document.body.className = "home";
@@ -70,17 +56,9 @@ export default {
   text-decoration: none;
 }
 
-/* a:visited {
-  color: white;
-} */
-/* a:hover {
-  color: #ff0dbf;
-} */
-
 /* For Expandable Image */
 .image {
   width: 400px;
   max-width: 100%;
 }
-
 </style>

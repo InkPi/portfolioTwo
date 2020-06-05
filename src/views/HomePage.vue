@@ -1,8 +1,7 @@
 <template>
   <div id="home">
-    <!-- <div :class="{ brickwall: isHome }" :id="brickwall | noBricks"> -->
-    <div :class="{ brickwall: isHome }" :id="brickwall | noBricks">
-      <HeaderTop class="links" @click="deleteBrickWall" />
+    <div :class="{ brickwall: isHome }" :id="brickwall">
+      <HeaderTop />
     </div>
   </div>
 </template>
@@ -21,11 +20,6 @@ export default {
   },
   components: {
     HeaderTop
-  },
-  methods: {
-    // isBrickWall() {
-    //   if()
-    // }
   }
 };
 </script>
@@ -34,19 +28,16 @@ export default {
 h1 {
   color: black;
 }
+
 p {
   color: black;
 }
+
 .brickwall {
-  background: no-repeat center/100% url("../assets/jakob-braun-NpeFMd8FseU-unsplash.jpg");
+  background: no-repeat center/100%
+    url("../assets/jakob-braun-NpeFMd8FseU-unsplash.jpg");
+  background-size: cover;
   height: 100vh;
   overflow: clip;
-}
-
-a {
-  color: black;
-}
-.links:hover {
-  color: pink;
 }
 </style>
