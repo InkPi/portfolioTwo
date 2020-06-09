@@ -1,6 +1,6 @@
 <template>
   <div id="home">
-    <div :class="{ brickwall: isHome }" :id="brickwall">
+    <div :class="{ brickwall: isHome }">
       <HeaderTop />
     </div>
   </div>

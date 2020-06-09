@@ -15,17 +15,39 @@
             those @event create glitch effects when hovered + links were unclickable
         -->
         <div :style="link.styleCss" :class="'port' + link.linkId"></div>
+
         <div
           v-if="link.github"
           :style="link.styleCss"
           :class="'top' + link.linkId"
         >
-          <router-link to="https://inkpi.github.io/28th-glitch-GithubPgs/"
-            ><p class="linkSpace">Online View</p></router-link
-          >
-          <a href="https://inkpi.github.io/28th-glitch-GithubPgs/"
-            ><p class="linkSpace">Github Repo</p></a
-          >
+          <a :href="link.dataContent1"><p class="linkSpace">Online View</p></a>
+          <a :href="link.dataContent2"><p class="linkSpace">Github Repo</p></a>
+
+          <p v-if="link.collabComment">* collaboration project</p>
+          <p v-if="link.oldComment" style="color: rgba(255,255,255,.7)">* Old portfolio site</p>
+        </div>
+
+        <div v-if="link.staticImg" :style="link.styleCss" id="modalBttn">
+          <!-- <a href="@/assets/static/acs.pdf"><div :style="link.styleCss"></div></a> -->
+        </div>
+
+        <div id="myModal" class="modal">
+
+          <div class="modal-content">
+            <div class="modal-header">
+             <span class="close">&times;</span>
+              <h2>Modal Header</h2>
+            </div>
+            <div class="modal-body">
+              <p>Some text in the Modal Body</p>
+              <p>Some other text...</p>
+            </div>
+            <div class="modal-footer">
+              <h3>Modal Footer</h3>
+            </div>
+          </div>
+
         </div>
       </a>
       <!-- <div>
@@ -40,23 +62,40 @@
           :style="link.styleCss"
           :class="'top' + link.linkId"
         >
-          <router-link to="https://inkpi.github.io/28th-glitch-GithubPgs/"
-            ><p class="linkSpace">Online View</p></router-link
-          >
-          <a href="https://inkpi.github.io/28th-glitch-GithubPgs/"
-            ><p class="linkSpace">Github Repo</p></a
-          >
-        </div>
-      </div> -->
-      <!--works w/:    :data-content="[link.dataContent1, link.dataContent2]" -->
-      <!-- :class="['port' + link.linkId, { gitStuff: link.github }]" -->
-
-      <!-- <img v-bind:src="linko" /> -->
+       -->
     </div>
   </div>
 </template>
 
 <script>
+/* WebAPI: need .onload ()
+ * otherwise: Uncaught TypeError: Cannot set property 'onclick' of null [duplicate]
+ */
+window.onload = function() {
+  //Modal
+  var modal = document.getElementById("myModal");
+
+  var btnDiv = document.getElementById("modalBttn");
+
+  var span = document.getElementsByClassName("close")[0];
+  // When the user clicks the button, open the modal
+  btnDiv.onclick = function() {
+    modal.style.display = "block";
+  };
+
+  // When the user clicks on <span> (x), close the modal
+  span.onclick = function() {
+    modal.style.display = "none";
+  };
+
+  // When the user clicks anywhere outside of the modal, close it
+  window.onclick = function(event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  };
+};
+
 //import ExpandableImage from '../../ExpandableImage'
 import HeaderTop from "../components/HeaderTop";
 
@@ -181,7 +220,7 @@ export default {
         },
         {
           linkId: 11,
-          linkHref: "../assets/acs.pdf",
+          dataContent2: "https://github.com/InkPi/inkpi.github.io",
           styleCss: {
             width: "320px",
             height: "300px",
@@ -189,14 +228,14 @@ export default {
             backgroundPosition: "0px -7px"
           },
           hover: false,
-          dataContent1: "online view",
-          dataContent2: "github page source code",
+          dataContent1: "https://inkpi.github.io/",
           github: true,
-          staticImg: false
+          staticImg: false,
+          oldComment: true
         },
         {
           linkId: 12,
-          linkHref: "https://inkpi.github.io/rpgGame/",
+          dataContent2: "https://github.com/InkPi/rpgGame",
           styleCss: {
             width: "320px",
             height: "300px",
@@ -204,14 +243,13 @@ export default {
             backgroundSize: "cover"
           },
           hover: false,
-          dataContent1: "online view",
-          dataContent2: "github page source code",
+          dataContent1: "https://inkpi.github.io/rpgGame/",
           github: true,
           staticImg: false
         },
         {
           linkId: 13,
-          linkHref: "https://inkpi.github.io/28th-glitch-GithubPgs/",
+          dataContent2: "https://github.com/Mjavala/28th",
           styleCss: {
             width: "640px",
             height: "300px",
@@ -221,18 +259,10 @@ export default {
             float: "left"
           },
           hover: false,
-          dataContent1: `
-            var a = document.createElement('a');
-            var linkText = document.createTextNode("online view");
-            a.appendChild(linkText);
-            a.title = "online view";
-            a.href = "https://inkpi.github.io/28th-glitch-GithubPgs/";
-            document.body.appendChild(a);
-          `,
-          dataContent2:
-            "<a href='https://stackoverflow.com/questions/38428220/convert-string-to-dom-in-vuejs'>github page source code</a>",
+          dataContent1: "https://inkpi.github.io/28th-glitch-GithubPgs/",
           github: true,
-          staticImg: false
+          staticImg: false,
+          collabComment: true
         }
       ],
       alertText: "* to be fixed",
@@ -426,13 +456,89 @@ export default {
   padding: 10px;
   text-align: center;
 }
-/* .top11, .top12 {
-  width: 320px;
-  height: 300px;
+
+/* Modal */
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed;
+  z-index: 1;
+  padding-top: 100px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4);
 }
 
-.top13 {
-  width: 640px;
-  height: 300px;
-} */
+/* Modal Content */
+.modal-content {
+  position: relative;
+  background-color: #fefefe;
+  margin: auto;
+  padding: 0;
+  border: 1px solid #888;
+  width: 80%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  -webkit-animation-name: animatetop;
+  -webkit-animation-duration: 0.4s;
+  animation-name: animatetop;
+  animation-duration: 0.4s;
+}
+
+@-webkit-keyframes animatetop {
+  from {
+    top: -300px;
+    opacity: 0;
+  }
+  to {
+    top: 0;
+    opacity: 1;
+  }
+}
+
+@keyframes animatetop {
+  from {
+    top: -300px;
+    opacity: 0;
+  }
+  to {
+    top: 0;
+    opacity: 1;
+  }
+}
+
+/* Close Button */
+.close {
+  color: white;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.modal-header {
+  padding: 2px 16px;
+  background-color: #5cb85c;
+  color: white;
+}
+
+.modal-body {
+  padding: 2px 16px;
+}
+
+.modal-footer {
+  padding: 2px 16px;
+  background-color: #5cb85c;
+  color: white;
+}
 </style>
