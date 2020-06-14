@@ -10,7 +10,7 @@ import HeaderTop from "../components/HeaderTop";
 
 export default {
   name: "contact",
-  data(){
+  data() {
     return {
       linkcolor: "black-link"
     };

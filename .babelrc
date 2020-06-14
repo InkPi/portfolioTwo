@@ -1,0 +1,9 @@
+//from https://www.sitepoint.com/beginners-guide-webpack-module-bundling/
+{
+    "presets": [
+      ["@babel/env", {
+        "modules": false
+      }]
+    ],
+    "plugins": ["syntax-dynamic-import"]
+}

@@ -8,9 +8,6 @@
       <div class="experiment"></div>
 
       <a v-for="link in links.slice().reverse()" :key="link.linkId">
-        <!-- ^^ :href="link.linkHref" -->
-        <!-- <div :style="link.styleCss"></div> -->
-
         <!-- hover over @mouseover and @mouseleave
             those @event create glitch effects when hovered + links were unclickable
         -->
@@ -25,18 +22,26 @@
           <a :href="link.dataContent2"><p class="linkSpace">Github Repo</p></a>
 
           <p v-if="link.collabComment">* collaboration project</p>
-          <p v-if="link.oldComment" style="color: rgba(255,255,255,.7)">* Old portfolio site</p>
+          <p v-if="link.oldComment" style="color: rgba(255,255,255,.7)">
+            * Old portfolio site
+          </p>
         </div>
 
-        <div v-if="link.staticImg" :style="link.styleCss" id="modalBttn">
-          <!-- <a href="@/assets/static/acs.pdf"><div :style="link.styleCss"></div></a> -->
-        </div>
+        <img :src="link.linkHref" />
+
+        <div
+          v-if="link.staticImg"
+          :style="link.styleCss"
+          id="modalBttn"
+          @click="openModal"
+        ></div>
+        <!-- v-for made it crop weirdly -->
+        <modal-template v-model="modalOpen" :link="link"></modal-template>
 
         <div id="myModal" class="modal">
-
           <div class="modal-content">
             <div class="modal-header">
-             <span class="close">&times;</span>
+              <span class="close">&times;</span>
               <h2>Modal Header</h2>
             </div>
             <div class="modal-body">
@@ -47,7 +52,6 @@
               <h3>Modal Footer</h3>
             </div>
           </div>
-
         </div>
       </a>
       <!-- <div>
@@ -68,41 +72,15 @@
 </template>
 
 <script>
-/* WebAPI: need .onload ()
- * otherwise: Uncaught TypeError: Cannot set property 'onclick' of null [duplicate]
- */
-window.onload = function() {
-  //Modal
-  var modal = document.getElementById("myModal");
-
-  var btnDiv = document.getElementById("modalBttn");
-
-  var span = document.getElementsByClassName("close")[0];
-  // When the user clicks the button, open the modal
-  btnDiv.onclick = function() {
-    modal.style.display = "block";
-  };
-
-  // When the user clicks on <span> (x), close the modal
-  span.onclick = function() {
-    modal.style.display = "none";
-  };
-
-  // When the user clicks anywhere outside of the modal, close it
-  window.onclick = function(event) {
-    if (event.target == modal) {
-      modal.style.display = "none";
-    }
-  };
-};
-
 //import ExpandableImage from '../../ExpandableImage'
 import HeaderTop from "../components/HeaderTop";
+import modalTemplate from "../components/ModalPort.vue";
 
 export default {
   name: "portfolioBody",
   components: {
-    HeaderTop
+    HeaderTop,
+    "modal-template": modalTemplate
   },
   data() {
     return {
@@ -110,14 +88,16 @@ export default {
       links: [
         {
           linkId: 1,
-          linkHref: "../assets/960_grid_16_col3d.jpg",
+          linkHref: require("../assets/acs.pdf"),
           styleCss: {
             width: "320px",
             height: "300px",
             float: "left"
           },
           github: false,
-          staticImg: true
+          staticImg: true,
+          title: "ACS Internship",
+          parag: "Interned at ACS, an certified education facility."
         },
         {
           linkId: 2,
@@ -128,7 +108,9 @@ export default {
             float: "left"
           },
           github: false,
-          staticImg: true
+          staticImg: true,
+          title: "ACS Internship",
+          parag: "Interned at ACS, an certified education facility."
         },
         {
           linkId: 3,
@@ -139,7 +121,9 @@ export default {
             float: "right"
           },
           github: false,
-          staticImg: true
+          staticImg: true,
+          title: "Ocean Damage Graph Chart",
+          parag: "A chart displaying the cause and effects of"
         },
         {
           linkId: 4,
@@ -150,7 +134,9 @@ export default {
             float: "left"
           },
           github: false,
-          staticImg: true
+          staticImg: true,
+          title: "Ear bud packaging",
+          parag: "Product design of a pair of ear buds"
         },
         {
           linkId: 5,
@@ -161,7 +147,9 @@ export default {
             float: "left"
           },
           github: false,
-          staticImg: true
+          staticImg: true,
+          title: "Poster",
+          parag: "Typography Poster"
         },
         {
           linkId: 6,
@@ -172,7 +160,9 @@ export default {
             float: "left"
           },
           github: false,
-          staticImg: true
+          staticImg: true,
+          title: "CBI Website Redesign",
+          parag: "Another site I worked on and redesigned their pages as part of my internship."
         },
         {
           linkId: 7,
@@ -183,7 +173,9 @@ export default {
             float: "left"
           },
           github: false,
-          staticImg: true
+          staticImg: true,
+          title: "PhotoShop Manipulation",
+          parag: "Manipulation of various smoke to form a dragon in photoshop."
         },
         {
           linkId: 8,
@@ -194,7 +186,9 @@ export default {
             float: "left"
           },
           github: false,
-          staticImg: true
+          staticImg: true,
+          title: "Event Poster",
+          parag: "Manipulation of various smoke to form a dragon in photoshop."
         },
         {
           linkId: 9,
@@ -205,7 +199,9 @@ export default {
             float: "left"
           },
           github: false,
-          staticImg: true
+          staticImg: true,
+          title: "Website Design for..",
+          parag: "Manipulation of various smoke to form a dragon in photoshop."
         },
         {
           linkId: 10,
@@ -216,7 +212,9 @@ export default {
             float: "right"
           },
           github: false,
-          staticImg: true
+          staticImg: true,
+          title: "Children Book Illustration",
+          parag: "Made pages"
         },
         {
           linkId: 11,
@@ -231,7 +229,9 @@ export default {
           dataContent1: "https://inkpi.github.io/",
           github: true,
           staticImg: false,
-          oldComment: true
+          oldComment: true,
+          title: "Original Portfolio page",
+          parag: "Prev"
         },
         {
           linkId: 12,
@@ -245,7 +245,9 @@ export default {
           hover: false,
           dataContent1: "https://inkpi.github.io/rpgGame/",
           github: true,
-          staticImg: false
+          staticImg: false,
+          title: "RPG Game",
+          parag: "A role play type game I made where you play as psychotic person who believes everyone is being controlled by none human's cute appearance and must kill as many as you could before being killed by them."
         },
         {
           linkId: 13,
@@ -262,7 +264,9 @@ export default {
           dataContent1: "https://inkpi.github.io/28th-glitch-GithubPgs/",
           github: true,
           staticImg: false,
-          collabComment: true
+          collabComment: true,
+          title: "Glitchy Text",
+          parag: "Created a glictchy paragraph"
         }
       ],
       alertText: "* to be fixed",
@@ -270,8 +274,20 @@ export default {
       onlineViewLinks: [],
       //direct github code
       githubLinks:
-        "<a href='https://inkpi.github.io/28th-glitch-GithubPgs/'>github page</a>"
+        "<a href='https://inkpi.github.io/28th-glitch-GithubPgs/'>github page</a>",
+      modalOpen: false
     };
+  },
+  methods: {
+    // show() {
+    //   this.$modal.show("hello-world");
+    // },
+    // hide() {
+    //   this.$modal.hide("hello-world");
+    // }
+    openModal() {
+      this.modalOpen = !this.modalOpen;
+    }
   }
   // methods: {
   //   applyHoverLinks() {
@@ -383,29 +399,6 @@ export default {
 .gitStuff:hover {
   opacity: 0.5;
 }
-
-/* .port13 img {
-  width: 100%;
-  vertical-align: top;
-} */
-
-/* .port13:after {
-  
-  //This hover to change different image!
-  //I want actual link text to go there
-   
-  content: attr(v-html);
-  color: #fff;
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  background: rgba(0, 0, 0, 0.6);
-  opacity: 0;
-  transition: all 0.5s;
-  -webkit-transition: all 0.5s;
-} */
 
 .port13:hover:after {
   opacity: 1;

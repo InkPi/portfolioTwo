@@ -10,7 +10,7 @@ import HeaderTop from "../components/HeaderTop";
 
 export default {
   name: "AboutMe",
-  components:{
+  components: {
     HeaderTop
   },
   beforeCreate: function() {
