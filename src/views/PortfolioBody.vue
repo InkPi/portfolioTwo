@@ -76,6 +76,8 @@
 import HeaderTop from "../components/HeaderTop";
 import modalTemplate from "../components/ModalPort.vue";
 
+import budPdf from "../assets/bud.pdf";
+
 export default {
   name: "portfolioBody",
   components: {
@@ -88,7 +90,7 @@ export default {
       links: [
         {
           linkId: 1,
-          linkHref: require("../assets/acs.pdf"),
+          linkHref: "../assets/acs.pdf",
           styleCss: {
             width: "320px",
             height: "300px",
@@ -127,7 +129,7 @@ export default {
         },
         {
           linkId: 4,
-          linkHref: "../assets/bud.pdf",
+          linkHref: { budPdf },
           styleCss: {
             width: "320px",
             height: "300px",
