@@ -13,28 +13,37 @@
         -->
         <div :style="link.styleCss" :class="'port' + link.linkId"></div>
 
-        <div
-          v-if="link.github"
-          :style="link.styleCss"
-          :class="'top' + link.linkId"
-        >
-          <a :href="link.dataContent1"><p class="linkSpace">Online View</p></a>
-          <a :href="link.dataContent2"><p class="linkSpace">Github Repo</p></a>
+        <div class="modalParent">
+          <div
+            v-if="link.github"
+            :style="link.styleCss"
+            :class="'top' + link.linkId"
+          >
+            <a :href="link.dataContent1"><p class="linkSpace">Online View</p></a>
+            <a :href="link.dataContent2"><p class="linkSpace">Github Repo</p></a>
 
-          <p v-if="link.collabComment">* collaboration project</p>
-          <p v-if="link.oldComment" style="color: rgba(255,255,255,.7)">
-            * Old portfolio site
-          </p>
+            <p v-if="link.collabComment">* collaboration project</p>
+            <p v-if="link.oldComment" style="color: rgba(255,255,255,.7)">
+              * Old portfolio site
+            </p>
+          </div>
+
+        <!-- static ones -->
+
+        <!-- I just comment out -->
+        <!-- <img :src="link.linkHref" /> -->
+        <!-- <embed :style="link.styleCss" :src="link.linkHref" /> -->
+          <div
+            v-if="link.staticImg"
+            :style="link.styleCss"
+            id="modalBttn"
+            :class="'modalBttn' + link.linkId"
+            @click="openModal"
+          >
+            <p>link#{{link.linkId}}</p>
+          </div>
         </div>
 
-        <img :src="link.linkHref" />
-
-        <div
-          v-if="link.staticImg"
-          :style="link.styleCss"
-          id="modalBttn"
-          @click="openModal"
-        ></div>
         <!-- v-for made it crop weirdly -->
         <modal-template v-model="modalOpen" :link="link"></modal-template>
 
@@ -75,8 +84,6 @@
 //import ExpandableImage from '../../ExpandableImage'
 import HeaderTop from "../components/HeaderTop";
 import modalTemplate from "../components/ModalPort.vue";
-
-import budPdf from "../assets/bud.pdf";
 
 export default {
   name: "portfolioBody",
@@ -129,7 +136,8 @@ export default {
         },
         {
           linkId: 4,
-          linkHref: { budPdf },
+          linkHref: "../assets/bud.pdf",
+          //inkHref: require("../assets/bud.pdf"),
           styleCss: {
             width: "320px",
             height: "300px",
@@ -339,6 +347,29 @@ export default {
   margin: 0px auto;
 }
 
+.port1,
+.port2,
+.port3,
+.port4,
+.port5,
+.port6,
+.port7,
+.port8,
+.port9,
+.port10,
+.port11,
+.port12,
+.port13 {
+  z-index: -1;
+}
+
+#modalBttn {
+  z-index: 2;
+  position: absolute;
+}
+
+.modalBttn3 {}
+
 .port1 {
   position: relative;
   background: url("../assets/acspreporiginal2icon.jpg");
@@ -406,33 +437,62 @@ export default {
   opacity: 1;
 }
 
+.modalParent {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(6, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+  position: absolute;
+}
+
 .top11,
 .top12,
-.top13 {
+.top13,
+#modalBttn {
   background-color: rgba(0, 0, 0, 0.4);
   z-index: 2;
   /* top: -300px; */
+  padding: 0px;
+  margin: 0px;
+  position: relative;
+  display: block;
+  opacity: 0;
+  transition: opacity 1s;
+}
+
+.top11:hover,
+.top12:hover,
+.top13:hover,
+#modalBttn:hover {
+  opacity: 1;
+}
+
+.modalBttn1 { grid-area: 6 / 2 / 7 / 3; }
+.modalBttn2 { grid-area: 6 / 1 / 7 / 2; }
+.modalBttn3 { grid-area: 5 / 3 / 7 / 4; }
+.modalBttn4 { grid-area: 5 / 2 / 6 / 3; }
+.modalBttn5 { grid-area: 5 / 1 / 6 / 2; }
+.modalBttn6 { grid-area: 4 / 2 / 5 / 4; }
+.modalBttn7 { grid-area: 3 / 3 / 4 / 4; }
+.modalBttn8 { grid-area: 3 / 2 / 4 / 3; }
+.modalBttn9 { grid-area: 3 / 1 / 5 / 2; }
+.modalBttn10 { grid-area: 2 / 2 / 3 / 4; }
+
+.top11 { grid-area: 2 / 1 / 3 / 2; }
+.top12 { grid-area: 1 / 3 / 2 / 4; }
+.top13 { grid-area: 1 / 1 / 2 / 3; }
+
+/* #modalBttn {
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 2;
   padding: 0px;
   margin: 0px;
   position: absolute;
   display: block;
   opacity: 0;
   transition: opacity 1s;
-}
-
-.top12 {
-  right: 240px;
-}
-
-.top11 {
-  top: 425px;
-}
-
-.top11:hover,
-.top12:hover,
-.top13:hover {
-  opacity: 1;
-}
+} */
 
 .linkSpace {
   color: white;
