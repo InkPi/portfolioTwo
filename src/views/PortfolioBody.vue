@@ -1,4 +1,5 @@
 <template>
+  <!-- for package server "build": "webpack --mode production", -->
   <div id="portfolioBody">
     <HeaderTop />
     <img src="../assets/portribbon.png" />
@@ -6,6 +7,8 @@
     <br />
     <div class="image-popup-no-margins">
       <div class="experiment"></div>
+
+      <modal-template v-if="modalVisible" :data="modalData"></modal-template>
 
       <a v-for="link in links.slice().reverse()" :key="link.linkId">
         <!-- hover over @mouseover and @mouseleave
@@ -38,14 +41,14 @@
             :style="link.styleCss"
             id="modalBttn"
             :class="'modalBttn' + link.linkId"
-            @click="openModal"
+            @click="openModal(link)"
           >
             <p>link#{{link.linkId}}</p>
           </div>
         </div>
 
         <!-- v-for made it crop weirdly -->
-        <modal-template v-model="modalOpen" :link="link"></modal-template>
+        <!-- <modal-template v-model="modalOpen" :link="link"></modal-template> -->
 
         <div id="myModal" class="modal">
           <div class="modal-content">
@@ -63,19 +66,14 @@
           </div>
         </div>
       </a>
-      <!-- <div>
-        <div
-          :style="link.styleCss"
-          :class="'port' + link.linkId"
-          @mouseover="link.hover = true"
-          @mouseleave="link.hover = false"
-        ></div>
-        <div
-          v-if="link.hover && link.github"
-          :style="link.styleCss"
-          :class="'top' + link.linkId"
-        >
-       -->
+
+      <!-- <modal-template
+        v-model="modalOpen"
+        v-for="link in links.slice().reverse()"
+        :link="link"
+        :key="link.linkId"
+      ></modal-template> -->
+
     </div>
   </div>
 </template>
@@ -97,7 +95,7 @@ export default {
       links: [
         {
           linkId: 1,
-          linkHref: "../assets/acs.pdf",
+          linkHref: "https://drive.google.com/file/d/1F3rhLH7D7CiPxK_phrq65DNjzIr6w1Ki/preview?usp=sharing",
           styleCss: {
             width: "320px",
             height: "300px",
@@ -110,7 +108,7 @@ export default {
         },
         {
           linkId: 2,
-          linkHref: "../assets/typo2webfinal2.pdf",
+          linkHref: "https://drive.google.com/file/d/1QMcBIm3sqUSLGW1ybFRpGQgL2D3jVzVh/preview?usp=sharing",
           styleCss: {
             width: "320px",
             height: "300px",
@@ -136,8 +134,8 @@ export default {
         },
         {
           linkId: 4,
-          linkHref: "../assets/bud.pdf",
-          //inkHref: require("../assets/bud.pdf"),
+          linkHref:
+            "https://drive.google.com/file/d/1D1p7f71Yrhe3RWPjlN7Yi0IoEBAoICrn/preview?usp=sharing",
           styleCss: {
             width: "320px",
             height: "300px",
@@ -202,7 +200,7 @@ export default {
         },
         {
           linkId: 9,
-          linkHref: "../assets/lionhungryB.pdf",
+          linkHref: "https://drive.google.com/file/d/1Z3DSeuOyvqSf47uZZMCcEE0-PhKmCP5b/preview?usp=sharing",
           styleCss: {
             width: "320px",
             height: "600px",
@@ -215,7 +213,8 @@ export default {
         },
         {
           linkId: 10,
-          linkHref: "../assets/typo2maggridsb.pdf",
+          linkHref:
+            "https://drive.google.com/file/d/18bYDb21dLgoOoJe-R2REARrl77e0_Yes/preview?usp=sharing",
           styleCss: {
             width: "640px",
             height: "300px",
@@ -285,59 +284,17 @@ export default {
       //direct github code
       githubLinks:
         "<a href='https://inkpi.github.io/28th-glitch-GithubPgs/'>github page</a>",
-      modalOpen: false
+      modalVisible: false,
+      modalData: null
     };
   },
   methods: {
-    // show() {
-    //   this.$modal.show("hello-world");
-    // },
-    // hide() {
-    //   this.$modal.hide("hello-world");
-    // }
-    openModal() {
-      this.modalOpen = !this.modalOpen;
+    openModal(data) {
+      //this.modalOpen = !this.modalOpen;
+      this.modalData = linkModal;
+      this.modalVisible = true;
     }
   }
-  // methods: {
-  //   applyHoverLinks() {
-  //     let nodeId = "hoverLinks";
-  //     //do I need this?
-  //     let style = document.createElement(nodeId);
-  //     if (!style) {
-  //       style = document.createElement("style");
-  //       style.id = nodeId;
-  //       style.type = "text/css";
-  //       //append style node as child of current component
-  //       this.$el.appendChild(style);
-  //     }
-
-  //     let cssRule = `
-  //       .{ 'port' + link.linkId }:after {
-  //         content: attr(data-content);
-  //         color:#fff;
-  //         position:absolute;
-  //         width:100%; height:100%;
-  //         top:0; left:0;
-  //         background:rgba(0,0,0,0.6);
-  //         opacity:0;
-  //         transition: all 0.5s;
-  //         -webkit-transition: all 0.5s;
-  //       }
-
-  //       .{ 'port' + link.linkId }:hover:after {
-  //         opacity:1;
-  //       }
-  //     `;
-  //     style.innerHTML = cssRule;
-  //   },
-  //   mounted: function() {
-  //     this.applyHoverLinks();
-  //   },
-  //   beforeUpdate: function() {
-  //     this.applyHoverLinks();
-  //   }
-  // }
 };
 </script>
 

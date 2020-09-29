@@ -3,14 +3,14 @@
     <template>
       <div class="modal" v-show="value" id="modalid">
         <div class="container">
-          <div class="modal__title" style="color:white">{{ link.title }}</div>
+          <div class="modal__title" style="color:white">{{ link.title }} modal title</div>
           <p>{{ link.parag }}</p>
-          <img :src="link.linkHref" />
           <i
             class="fas fa-times"
             @click.prevent="close"
             style="color:white"
           ></i>
+          <embed width="100%" height="900px" :src="link.linkHref" />
         </div>
       </div>
     </template>
@@ -24,7 +24,7 @@ export default {
     value: {
       required: true
     },
-    link: {
+    linkModal: {
       required: true
     }
   },
