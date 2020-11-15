@@ -10,7 +10,11 @@
             @click.prevent="close"
             style="color:white"
           ></i>
-          <embed width="100%" height="900px" :src="link.linkHref" />
+          <embed
+            :width="link.width"
+            :height="link.height"
+            :src="link.linkHref"
+          />
         </div>
       </div>
     </template>
@@ -24,7 +28,7 @@ export default {
     value: {
       required: true
     },
-    linkModal: {
+    link: {
       required: true
     }
   },

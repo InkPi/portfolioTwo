@@ -8,6 +8,7 @@
       alt="dog"
       title="dog"
     /> -->
+    <modal-router-view></modal-router-view>
   </div>
 </template>
 

@@ -8,12 +8,13 @@
     <div class="image-popup-no-margins">
       <div class="experiment"></div>
 
-      <modal-template v-if="modalVisible" :data="modalData"></modal-template>
+      <modal-template
+        v-if="modalVisible"
+        :value="modalVisible"
+        :link="modalData"
+      ></modal-template>
 
       <a v-for="link in links.slice().reverse()" :key="link.linkId">
-        <!-- hover over @mouseover and @mouseleave
-            those @event create glitch effects when hovered + links were unclickable
-        -->
         <div :style="link.styleCss" :class="'port' + link.linkId"></div>
 
         <div class="modalParent">
@@ -31,11 +32,7 @@
             </p>
           </div>
 
-        <!-- static ones -->
-
-        <!-- I just comment out -->
-        <!-- <img :src="link.linkHref" /> -->
-        <!-- <embed :style="link.styleCss" :src="link.linkHref" /> -->
+        <!--10/4-->
           <div
             v-if="link.staticImg"
             :style="link.styleCss"
@@ -47,9 +44,7 @@
           </div>
         </div>
 
-        <!-- v-for made it crop weirdly -->
-        <!-- <modal-template v-model="modalOpen" :link="link"></modal-template> -->
-
+        <!--This I believe was my attempt at modal for a different approach-->
         <div id="myModal" class="modal">
           <div class="modal-content">
             <div class="modal-header">
@@ -66,20 +61,11 @@
           </div>
         </div>
       </a>
-
-      <!-- <modal-template
-        v-model="modalOpen"
-        v-for="link in links.slice().reverse()"
-        :link="link"
-        :key="link.linkId"
-      ></modal-template> -->
-
     </div>
   </div>
 </template>
 
 <script>
-//import ExpandableImage from '../../ExpandableImage'
 import HeaderTop from "../components/HeaderTop";
 import modalTemplate from "../components/ModalPort.vue";
 
@@ -101,6 +87,8 @@ export default {
             height: "300px",
             float: "left"
           },
+          width: "90%",
+          height: "900px",
           github: false,
           staticImg: true,
           title: "ACS Internship",
@@ -108,25 +96,29 @@ export default {
         },
         {
           linkId: 2,
-          linkHref: "https://drive.google.com/file/d/1QMcBIm3sqUSLGW1ybFRpGQgL2D3jVzVh/preview?usp=sharing",
+          linkHref: "https://drive.google.com/file/d/18bYDb21dLgoOoJe-R2REARrl77e0_Yes/preview?usp=sharing",
           styleCss: {
             width: "320px",
             height: "300px",
             float: "left"
           },
+          width: "90%",
+          height: "900px",
           github: false,
           staticImg: true,
-          title: "ACS Internship",
-          parag: "Interned at ACS, an certified education facility."
+          title: "Escape Velocity",
+          parag: "Magazine design on an article featuring studies of how penguins' speed in water came to be."
         },
         {
           linkId: 3,
-          linkHref: "../assets/seniorinformationc_icon.jpg",
+          linkHref: require("../assets/increasedtemp.jpg"),
           styleCss: {
             width: "320px",
             height: "600px",
             float: "right"
           },
+          width: "80%",
+          height: "auto",
           github: false,
           staticImg: true,
           title: "Ocean Damage Graph Chart",
@@ -141,6 +133,8 @@ export default {
             height: "300px",
             float: "left"
           },
+          width: "90%",
+          height: "900px",
           github: false,
           staticImg: true,
           title: "Ear bud packaging",
@@ -148,12 +142,15 @@ export default {
         },
         {
           linkId: 5,
-          linkHref: "../assets/WalkingSkyscrapers.jpg",
+          linkHref: require("../assets/WalkingSkyscrapers.jpg"),
           styleCss: {
             width: "320px",
             height: "300px",
             float: "left"
           },
+          width: "80%",
+          height: "auto",
+          modalWidth: this.staticWidth,
           github: false,
           staticImg: true,
           title: "Poster",
@@ -161,12 +158,14 @@ export default {
         },
         {
           linkId: 6,
-          linkHref: "../assets/CBI2.jpg",
+          linkHref: require("../assets/CBI2.jpg"),
           styleCss: {
             width: "640px",
             height: "300px",
             float: "left"
           },
+          width: "80%",
+          height: "auto",
           github: false,
           staticImg: true,
           title: "CBI Website Redesign",
@@ -174,12 +173,14 @@ export default {
         },
         {
           linkId: 7,
-          linkHref: "../assets/dragon.jpg",
+          linkHref: require("../assets/dragon.jpg"),
           styleCss: {
             width: "320px",
             height: "300px",
             float: "left"
           },
+          width: "80%",
+          height: "auto",
           github: false,
           staticImg: true,
           title: "PhotoShop Manipulation",
@@ -187,12 +188,14 @@ export default {
         },
         {
           linkId: 8,
-          linkHref: "../assets/SakuraMatsuri.jpg",
+          linkHref: require("../assets/SakuraMatsuri.jpg"),
           styleCss: {
             width: "320px",
             height: "300px",
             float: "left"
           },
+          width: "30%",
+          height: "auto",
           github: false,
           staticImg: true,
           title: "Event Poster",
@@ -200,26 +203,30 @@ export default {
         },
         {
           linkId: 9,
-          linkHref: "https://drive.google.com/file/d/1Z3DSeuOyvqSf47uZZMCcEE0-PhKmCP5b/preview?usp=sharing",
+          linkHref: "https://drive.google.com/file/d/1QMcBIm3sqUSLGW1ybFRpGQgL2D3jVzVh/preview?usp=sharing",
           styleCss: {
             width: "320px",
             height: "600px",
             float: "left"
           },
+          width: "90%",
+          height: "900px",
           github: false,
           staticImg: true,
-          title: "Website Design for..",
-          parag: "Manipulation of various smoke to form a dragon in photoshop."
+          title: "Website Design for an Art Museum",
+          parag: "A redesign of an existing website: wowhuh.com."
         },
         {
           linkId: 10,
           linkHref:
-            "https://drive.google.com/file/d/18bYDb21dLgoOoJe-R2REARrl77e0_Yes/preview?usp=sharing",
+            "https://drive.google.com/file/d/1Z3DSeuOyvqSf47uZZMCcEE0-PhKmCP5b/preview?usp=sharing",
           styleCss: {
             width: "640px",
             height: "300px",
             float: "right"
           },
+          width: "90%",
+          height: "900px",
           github: false,
           staticImg: true,
           title: "Children Book Illustration",
@@ -290,8 +297,8 @@ export default {
   },
   methods: {
     openModal(data) {
-      //this.modalOpen = !this.modalOpen;
-      this.modalData = linkModal;
+      console.log("open modal");
+      this.modalData = data;
       this.modalVisible = true;
     }
   }

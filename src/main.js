@@ -5,9 +5,19 @@ import store from "./store";
 
 import VueExpandableImage from "vue-expandable-image";
 import VModal from "vue-js-modal";
+import VueModalRouter from "vue-modal-router";
+import modalTemplate from "./components/ModalPort.vue";
 
 Vue.use(VueExpandableImage);
 Vue.use(VModal);
+Vue.use(VueModalRouter, {
+  model: "show",
+  delay: 300
+});
+
+const modalRouter = new VueModalRouter({
+  modalTemplate //maybe correct
+});
 
 //Was doing this but it conflicted with modal scrolling
 //  * when scrolled, everything turned to just background color
@@ -59,6 +69,7 @@ Vue.config.productionTip = false;
 new Vue({
   router,
   store,
+  modalRouter, //new
   render: h => h(App),
   //just added
   components: { App }

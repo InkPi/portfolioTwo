@@ -26,6 +26,7 @@
     "vue": "^2.6.11",
     "vue-expandable-image": "^0.1.0",
     "vue-js-modal": "^2.0.0-rc.6",
+    "vue-modal-router": "^0.6.1",
     "vue-pdf": "^4.1.0",
     "vue-router": "^3.4.5",
     "vuex": "^3.5.1"
